@@ -1,0 +1,17 @@
+HOW TO RUN?
+1) gcc ./server.c -o server -lpthread
+2) ./server
+3) gcc ./client.c -0 client
+4) ./client (In different terminals for each client.)
+
+İlk olarak main thread ve client "1111" key'i ile oluşturulmuş kanaldan haberleşir. Bunun üzerine main thread, worker thread'i oluşturur (her client için 1 tane).
+Worker thread ve client, client'a ait process id'yi key olarak kullanıp mesajlaşmaya başlar. 
+Worker thread mesaj geldiği sürece kanalı dinlemeye başlar.
+Process random array oluşturup unsorted halini konsola basar ve array'i mesaj olarak worker thread'e gönderir.
+Worker thread, array'i alıp sıraladıktan sonra process id ile beraber bir dosya oluşturup (PID.txt) arrayin sorted halini oraya yazar ve client'a mesaj gönderir.
+Client'da dosyadan (PID.txt) arrayi okuyup konsola basar ve 10 saniyelik uykuya geçer.
+
+NOT => Kod içerisinde her bloğun ne yaptığına dair detaylı comment line'lar bulunmaktadır.
+
+Mert Can Gönen - 181101039
+TOBB ETU Bilgisayar Mühendisliği 4.Sınıf
